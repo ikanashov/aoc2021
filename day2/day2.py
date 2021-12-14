@@ -6,16 +6,15 @@ Day 2: Dive!
 
 def day_2_task1(filename: str) -> None:
     """Calculate submarine position part 1"""
-    command_place = 0
-    command_value = 1
     with open(filename, encoding='utf-8') as file:
-        data = [(line.strip().split()[command_place], int(line.strip().split()[command_value])) for line in file]
+        data = [(line.strip().split()[0],
+                 int(line.strip().split()[1]))
+                for line in file]
 
         forward = 0
         depth = 0
-        for i in range(len(data)):
-            command = data[i][command_place]
-            value = data[i][command_value]
+        for command_log in data:
+            command, value = command_log
 
             if command == 'forward':
                 forward += value
@@ -24,22 +23,22 @@ def day_2_task1(filename: str) -> None:
             elif command == 'down':
                 depth += value
 
-        print(f'input filename - {filename} forward - {forward} depth - {depth}  multiply {forward * depth}')
+        print(f'input filename - {filename} forward - {forward}'
+              f' depth - {depth}  multiply {forward * depth}')
 
 
 def day_2_task2(filename: str) -> None:
     """Calculate submarine position part 2"""
-    command_place = 0
-    command_value = 1
     with open(filename, encoding='utf-8') as file:
-        data = [(line.strip().split()[command_place], int(line.strip().split()[command_value])) for line in file]
+        data = [(line.strip().split()[0],
+                 int(line.strip().split()[1]))
+                for line in file]
 
         forward = 0
         depth = 0
         aim = 0
-        for i in range(len(data)):
-            command = data[i][command_place]
-            value = data[i][command_value]
+        for command_log in data:
+            command, value = command_log
 
             if command == 'forward':
                 forward += value
